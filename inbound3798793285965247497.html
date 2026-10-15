@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossos 6 meses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--rosa:#ff91bf;--rosa-claro:#ffe0ed;--rosa-forte:#f34f98;--azul:#a9d9ff;--branco:#fffafd;--texto:#71334e}
+body{margin:0;min-height:100vh;font-family:'Nunito',sans-serif;color:var(--texto);background:linear-gradient(145deg,#fff4f8,#ffe1ee,#e7f5ff);overflow-x:hidden}
+button,input{font-family:'Nunito',sans-serif}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.escondido{display:none!important}
+.tela{min-height:100vh;width:100%;padding:25px 16px;display:flex;align-items:center;justify-content:center;text-align:center}
+.cartao{width:min(100%,470px);padding:28px 21px;border:3px solid white;border-radius:28px;background:rgba(255,255,255,.82);box-shadow:0 12px 40px rgba(220,104,157,.15);animation:aparecer .8s ease}
+@keyframes aparecer{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.titulo{font-family:'Great Vibes',cursive;color:#e64e91;font-size:clamp(38px,10vw,55px);line-height:1.2;margin:10px 0 20px}
+.subtitulo{font-size:15px;line-height:1.8}
+.campo{display:block;text-align:left;font-weight:800;margin:17px 0 7px}
+input{width:100%;padding:15px;font-size:17px;text-align:center;color:#753c57;background:#fff7fb;border:2px solid #f5b7d1;border-radius:15px;outline:none}
+input:focus{border-color:#e85b9d;box-shadow:0 0 0 3px #ffd8e9}
+.botao{border:none;padding:13px 24px;margin-top:18px;border-radius:30px;color:white;font-size:16px;font-weight:800;background:linear-gradient(120deg,#ff8fbb,#ee5c9b);box-shadow:0 5px 15px #f7b2d0;transition:transform .2s}
+.botao:active{transform:scale(.96)}
+.erro{color:#d72e68;font-weight:800;min-height:24px;margin-top:12px}
+.coracao-decorativo{color:#fa75ad;font-size:40px;animation:pulsar 1.5s infinite}
+@keyframes pulsar{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.presente-area{display:flex;flex-direction:column;align-items:center}
+.presente{position:relative;width:175px;height:155px;margin:35px auto 20px;cursor:pointer;animation:flutuar 2s infinite ease-in-out}
+@keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.caixa{position:absolute;width:150px;height:105px;bottom:0;left:12px;border-radius:8px;background:#ff9fc7;border:3px solid white}
+.caixa::after{content:"";position:absolute;left:56px;height:100%;width:28px;background:#a9d9ff}
+.tampa{position:absolute;width:170px;height:36px;left:2px;bottom:94px;border:3px solid white;border-radius:9px;background:#fa7db1;transform-origin:left bottom;transition:transform .8s;z-index:2}
+.laco{position:absolute;width:45px;height:35px;left:64px;bottom:120px;border:9px solid #a9d9ff;border-radius:50% 50% 0 50%;transform:rotate(-25deg);z-index:3}
+.presente.aberto .tampa{transform:translate(-28px,-50px) rotate(-35deg)}
+.presente.aberto{animation:none}
+.conteudo{width:min(100%,720px);margin:0 auto;padding:30px 18px 45px;text-align:center;animation:aparecer .7s ease}
+.painel{background:rgba(255,255,255,.86);padding:24px 20px;border-radius:25px;border:3px solid white;box-shadow:0 10px 35px rgba(220,104,157,.13)}
+.texto-amor{text-align:left;font-size:16px;line-height:2;white-space:pre-line}
+.seta{display:inline-flex;justify-content:center;align-items:center;width:58px;height:58px;margin-top:25px;border:3px solid white;border-radius:50%;color:white;background:linear-gradient(135deg,#ff9fc7,#ed5a9a);font-size:30px;box-shadow:0 5px 20px #f2b2cf;transition:transform .2s}
+.seta:active{transform:scale(.9)}
+.coracao-botao{position:relative;display:inline-flex;align-items:center;justify-content:center;width:150px;height:135px;margin:20px auto;border:none;background:transparent;color:white;font-size:17px;font-weight:800;isolation:isolate}
+.coracao-botao::before{content:"♥";position:absolute;inset:-30px 0 0;z-index:-1;font-size:170px;line-height:1;color:#ff8fbd;text-shadow:0 5px 0 white,0 8px 15px #e9a4c1}
+.chuva-coracoes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:10}
+.coracao-caindo{position:absolute;top:-50px;color:#f65d9e;animation:cair linear forwards;font-size:25px}
+@keyframes cair{to{transform:translateY(115vh) rotate(360deg);opacity:0}}
+.eu-te-amo{font-family:'Great Vibes',cursive;font-size:clamp(48px,12vw,72px);color:#ed4d91;animation:pulsar 1.2s infinite;margin:15px 0}
+.poema{font-size:17px;line-height:2;white-space:pre-line;color:#793d59}
+.assinatura{font-family:'Great Vibes',cursive;color:#e94e93;font-size:42px;margin-top:22px}
+.estrelinha{position:fixed;pointer-events:none;color:white;animation:brilho 2s infinite alternate}
+@keyframes brilho{from{opacity:.25;transform:scale(.7)}to{opacity:1;transform:scale(1.3)}}
+.rodape{font-size:12px;opacity:.7;margin-top:25px}
+@media(max-width:400px){.cartao{padding:24px 16px}.texto-amor{font-size:15px;line-height:1.9}}
+</style>
+</head>
+<body>
+<div class="chuva-coracoes" id="chuva"></div>
+<script>
+for(let i=0;i<18;i++){const estrela=document.createElement("div");estrela.className="estrelinha";estrela.textContent="✦";estrela.style.left=Math.random()*100+"%";estrela.style.top=Math.random()*100+"%";estrela.style.fontSize=(8+Math.random()*12)+"px";estrela.style.animationDelay=Math.random()*2+"s";document.body.appendChild(estrela)}
+</script>
+<section class="tela" id="telaLogin">
+<div class="cartao">
+<div class="coracao-decorativo">♥</div>
+<h1 class="titulo">Nosso cantinho</h1>
+<p class="subtitulo">Um lugar guardado especialmente<br>para nós dois.</p>
+<label class="campo" for="data">Nossa data especial</label>
+<input id="data" type="text" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" autocomplete="off">
+<label class="campo" for="senha">Nossa senha</label>
+<input id="senha" type="password" placeholder="Digite a senha" autocomplete="off">
+<button class="botao" onclick="entrar()">Abrir nosso cantinho</button>
+<div class="erro" id="erro"></div>
+<div class="rodape">Feito com amor para o meu gulinho.</div>
+</div>
+</section>
+<section class="tela escondido" id="telaPresente">
+<div class="cartao">
+<div class="coracao-decorativo">♥</div>
+<h1 class="titulo">Uma surpresa para você</h1>
+<p>Meu amor, preparei uma coisinha especial para comemorar a nossa história.</p>
+<div class="presente-area">
+<div class="presente" id="presente" role="button" tabindex="0" aria-label="Abrir presente" onclick="abrirPresente()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirPresente();}">
+<div class="tampa"></div><div class="laco"></div><div class="caixa"></div>
+</div>
+</div>
+<button class="botao" onclick="abrirPresente()">Abrir meu presente</button>
+<p class="subtitulo">Feito especialmente para você, Tiago.</p>
+</div>
+</section>
+<section class="escondido" id="telaDeclaracao">
+<main class="conteudo"><div class="painel">
+<h1 class="titulo">Nossos 6 meses e nossa nova fase juntos</h1>
+<p class="texto-amor">Aprendemos durante esses 6 meses e passamos por várias coisas juntos. Esses nossos 6 meses são uma história linda e tudo onde começou, meu gulinhoooooo.
+
+Quero que saiba que, mesmo em dias difíceis, você é quem eu escolho, e é quem eu amo, e que nada mudará dentro de mim e na forma como te vejo.
+
+Temos uma história, e tudo o que desejo é vencer nossa distância e poder te sentir, poder te ver, abraçar, beijar e fazer carinho. Quero conseguir ter nosso futuro juntos e sempre ser sua única mulher para a vida toda.
+
+Em qualquer momento e lugar, é sempre você que eu quero. É você que eu queria que estivesse ao meu lado. Meu amor por você nunca morre.
+
+Num mundo cheio de coisas temporárias, rezo para que você seja permanente.
+
+Eu sei que você está longe, mas você vale a pena, toda essa viagem e espera. Espero que a gente consiga estar juntos. Você é especial para mim, importante, o meu príncipe da minha vida toda.
+
+E que consigamos ser melhores daqui para frente.
+
+Eu te amo, meu Tiago.</p>
+<div class="coracao-decorativo">♥</div>
+<p>Tem mais uma coisinha que quero te mostrar...</p>
+<button class="seta" onclick="irParaCoracao()" aria-label="Próxima parte">→</button>
+</div></main>
+</section>
+<section class="tela escondido" id="telaCoracao">
+<div class="cartao">
+<h1 class="titulo">Uma perguntinha...</h1>
+<p>Meu amor, clica no coração.</p>
+<button class="coracao-botao" onclick="mostrarAmor()">Clica aqui</button>
+<div id="declaracaoCoracao" class="escondido">
+<div class="eu-te-amo">Eu te amo</div>
+<p>Eu te amo hoje, amanhã e em todos os dias que ainda vamos viver.</p>
+<p>Meu coração escolhe você, Tiago.</p>
+<button class="seta" onclick="irParaPoema()" aria-label="Ler poema">→</button>
+</div>
+</div>
+</section>
+<section class="tela escondido" id="telaPoema">
+<div class="cartao">
+<div class="coracao-decorativo">♥</div>
+<h1 class="titulo">Para o meu Tiago</h1>
+<div class="poema">Tiago, meu amor, meu lugar,
+mesmo distante, consigo te encontrar.
+Em cada pensamento, em cada oração,
+você continua morando no meu coração.
+
+Seis meses de histórias, de sonhos e emoção,
+de dias felizes e de superação.
+E mesmo que a distância insista em doer,
+meu coração sempre escolhe você.
+
+Quero segurar sua mão ao caminhar,
+olhar nos seus olhos e poder te abraçar.
+Quero ouvir sua voz bem pertinho de mim,
+e construir uma história que não tenha fim.
+
+Não prometo dias sem dificuldades,
+mas quero construir contigo novas realidades.
+Aprender com os erros, crescer lado a lado,
+e fazer do nosso amor um lugar cuidado.
+
+Quero ser teu carinho, teu abraço e teu lar,
+a pessoa com quem você possa contar.
+Quero dividir os sonhos e a vida também,
+e celebrar cada conquista que o futuro contém.
+
+Se o mundo mudar e o tempo passar,
+há algo que eu quero continuar a cultivar:
+o respeito, a confiança, o cuidado e a união,
+porque você é muito especial para o meu coração.
+
+Meu gulinho, que venha nossa nova fase,
+com mais amor e menos desencontros.
+Que a gente transforme a saudade em abraço
+e realize, juntos, os nossos sonhos.
+
+E se eu pudesse fazer um pedido ao destino,
+pediria você comigo em cada caminho.
+Pois, entre tantas pessoas que eu poderia escolher,
+é com você, Tiago, que eu quero viver.
+
+Eu te amo por quem você é,
+e pelo futuro que sonho construir.
+Que nossos seis meses sejam apenas o começo
+de tantas histórias que ainda vamos descobrir.</div>
+<div class="assinatura">Com amor, para sempre.</div>
+<button class="botao" onclick="recomecar()">Rever nossa surpresa</button>
+<p class="rodape">Você é uma parte linda da minha história.</p>
+</div>
+</section>
+<script>
+const DATA_CORRETA="16/04/2026";
+const SENHA_CORRETA="GULOSOS4G";
+const campoData=document.getElementById("data");
+campoData.addEventListener("input",function(){let numeros=this.value.replace(/\D/g,"").slice(0,8);if(numeros.length>=5){this.value=numeros.slice(0,2)+"/"+numeros.slice(2,4)+"/"+numeros.slice(4)}else if(numeros.length>=3){this.value=numeros.slice(0,2)+"/"+numeros.slice(2)}else{this.value=numeros}});
+function dataValida(data){if(!/^\d{2}\/\d{2}\/\d{4}$/.test(data))return false;const[dia,mes,ano]=data.split("/").map(Number);if(ano<1||mes<1||mes>12||dia<1)return false;return dia<=new Date(ano,mes,0).getDate()}
+function entrar(){const data=document.getElementById("data").value.trim();const senha=document.getElementById("senha").value;const erro=document.getElementById("erro");if(!dataValida(data)){erro.textContent="Digite uma data válida no formato DD/MM/AAAA.";return}if(data!==DATA_CORRETA||senha!==SENHA_CORRETA){erro.textContent="A data ou a senha está incorreta. Tente novamente, meu amor.";return}erro.textContent="";mostrarTela("telaPresente")}
+function mostrarTela(id){["telaLogin","telaPresente","telaDeclaracao","telaCoracao","telaPoema"].forEach(tela=>document.getElementById(tela).classList.add("escondido"));document.getElementById(id).classList.remove("escondido");window.scrollTo({top:0,behavior:"smooth"})}
+function abrirPresente(){document.getElementById("presente").classList.add("aberto");setTimeout(()=>mostrarTela("telaDeclaracao"),900)}
+function irParaCoracao(){mostrarTela("telaCoracao")}
+let chuvaAtiva=false;let intervaloCoracoes=null;
+function mostrarAmor(){document.getElementById("declaracaoCoracao").classList.remove("escondido");if(chuvaAtiva){criarCoracoes(30);return}chuvaAtiva=true;criarCoracoes(65);intervaloCoracoes=setInterval(()=>criarCoracoes(8),900)}
+function criarCoracoes(quantidade){const chuva=document.getElementById("chuva");for(let i=0;i<quantidade;i++){const coracao=document.createElement("span");coracao.className="coracao-caindo";coracao.textContent=Math.random()>.5?"♥":"♡";coracao.style.left=Math.random()*100+"vw";coracao.style.animationDuration=(2+Math.random()*4)+"s";coracao.style.fontSize=(14+Math.random()*25)+"px";coracao.style.color=Math.random()>.5?"#f65d9e":"#83c9ff";chuva.appendChild(coracao);setTimeout(()=>coracao.remove(),6500)}}
+function irParaPoema(){if(intervaloCoracoes){clearInterval(intervaloCoracoes);intervaloCoracoes=null}chuvaAtiva=false;document.getElementById("chuva").innerHTML="";mostrarTela("telaPoema")}
+function recomecar(){document.getElementById("presente").classList.remove("aberto");document.getElementById("declaracaoCoracao").classList.add("escondido");if(intervaloCoracoes){clearInterval(intervaloCoracoes);intervaloCoracoes=null}chuvaAtiva=false;document.getElementById("chuva").innerHTML="";mostrarTela("telaPresente")}
+document.getElementById("senha").addEventListener("keydown",event=>{if(event.key==="Enter")entrar()});
+document.getElementById("data").addEventListener("keydown",event=>{if(event.key==="Enter")document.getElementById("senha").focus()});
+</script>
+</body>
+</html>
